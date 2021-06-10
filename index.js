@@ -8,58 +8,36 @@ app.use(cors());
 app.get('/', function(req,res){res.send('Gamesearch')});
 
 
-const users = [
+const feedbacks = [
       
 ]
 
-const endpoint = "/users";
+const endpoint = "/feedbacks";
 
 app.get(endpoint, function(req,res){
-    res.send(users.filter(Boolean));
+    res.send(feedbacks.filter(Boolean));
 });
 
 app.get(`${endpoint}/:id`, function(req, res){
         const id = req.params.id;
-        const user = users[id];
+        const feedbacks = feedbacks[id];
 
-        if(!user){
+        if(!feedbacks){
             res.send("{}");
         }
         else{
-            res.send(user);
+            res.send(feedbacks);
         }
 });
 
 app.post(endpoint, function(req,res){
-    const user = {
-        id: users.length,
-        email: req.body["email"],
-        senha: req.body["senha"]
+    const feedbacks = {
+        id: feedbacks.length,
+        email: req.body["assunto"],
+        senha: req.body["feedbacktext"]
     };
-    users.push(user);
+    feedbacks.push(feedbacks);
     res.send("1");
-    notify();
-
-});
-
-app.put(`${endpoint}/:id`, function(req,res){
-    const id =  parseInt(req.params.id);
-    const user = {
-        id: id,
-        email: req.body["email"],
-        senha: req.body["senha"]
-    };
-
-    users[id] = user;
-    res.send("1");
-    notify();
-})
-
-app.delete(`${endpoint}/:id`, function(req,res){
-    const id = req.params.id;
-    delete users[id];
-    res.send("1");
-
     notify();
 
 });
