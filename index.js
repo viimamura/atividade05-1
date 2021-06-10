@@ -33,8 +33,8 @@ app.get(`${endpoint}/:id`, function(req, res){
 app.post(endpoint, function(req,res){
     const feedbacks = {
         id: feedbacks.length,
-        email: req.body["assunto"],
-        senha: req.body["feedbacktext"]
+        assunto: req.body["assunto"],
+        feedbacktext: req.body["feedbacktext"]
     };
     feedbacks.push(feedbacks);
     res.send("1");
