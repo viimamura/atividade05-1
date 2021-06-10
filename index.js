@@ -3,7 +3,8 @@ const cors = require('cors');
 const app = express();
 app.use(express.json());
 app.use(cors());
-//app.listen(3000);
+
+server.listen(process.env.PORT || 3000);
 
 app.get('/', function(req,res){res.send('Gamesearch')});
 
@@ -50,5 +51,3 @@ const INVALIDATE = 'invalidate';
 function notify(){
     io.sockets.emit(INVALIDATE,1);
 }
-
-server.listen(process.env.PORT || 3000);
