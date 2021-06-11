@@ -44,7 +44,7 @@ app.post(endpoint, function(req,res){
 app.delete(`${endpoint}/:id`, (req, res) => {
     const id = req.params.id;
     delete feedbacks[id];
-    res.send("1");
+    res.send("Feedback Deletado");
 
     // Notificar todos
     notify();
