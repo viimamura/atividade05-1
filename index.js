@@ -41,6 +41,15 @@ app.post(endpoint, function(req,res){
     notify();
 });
 
+app.delete(`${endpoint}/:id`, (req, res) => {
+    const id = req.params.id;
+    delete feedbacks[id];
+    res.send("1");
+
+    // Notificar todos
+    notify();
+});
+
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
