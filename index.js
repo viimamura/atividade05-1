@@ -20,26 +20,25 @@ app.get(endpoint, function(req,res){
 
 app.get(`${endpoint}/:id`, function(req, res){
         const id = req.params.id;
-        const feedbacks = feedbacks[id];
+        const feedback = feedbacks[id];
 
-        if(!feedbacks){
+        if(!feedback){
             res.send("{}");
         }
         else{
-            res.send(feedbacks);
+            res.send(feedback);
         }
 });
 
 app.post(endpoint, function(req,res){
-    const feedbacks = {
+    const feedback = {
         id: feedbacks.length,
         assunto: req.body["assunto"],
         feedbacktext: req.body["feedbacktext"]
     };
-    feedbacks.push(feedbacks);
+    feedbacks.push(feedback);
     res.send("1");
     notify();
-
 });
 
 const server = require('http').createServer(app);
