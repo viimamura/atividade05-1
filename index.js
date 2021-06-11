@@ -9,7 +9,7 @@ app.get('/', function(req,res){res.send('Gamesearch')});
 
 
 const feedbacks = [
-      
+      {id:0, assunto: "teste", feedbacktext: "feedbackteste"}
 ]
 
 const endpoint = "/feedbacks";
